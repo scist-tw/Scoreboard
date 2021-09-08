@@ -59,7 +59,7 @@ for(const [key, value] of Object.entries(res)){
 		ret[key]['Status'] = 'MLE';
 	}
 	else{
-		ret[key]['Status'] = 'OE';
+		ret[key]['Status'] = 'OS';
 	}
 }
 ret = JSON.stringify(ret);
