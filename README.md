@@ -1,13 +1,13 @@
 # SCIST Scoreboard 規劃
 
 預計支援 OJ
-- UVa
-- ZOJ
-- TOJ
-- TIOJ
-- Kattis
-- AtCoder
-- CodeForces
+- [UVa](#UVa)
+- [ZOJ](#ZOJ)
+- [TOJ](#TOJ)
+- [TIOJ](#TIOJ)
+- [Kattis](#Kattis)
+- [AtCoder](#AtCoder)
+- [CodeForces](#CodeForces)
 
 ## OJ 相關
 
@@ -18,20 +18,20 @@ UVa 可以透過 Uhunt API 獲取解題狀況。
 
 UVa 解題的 Status 分成幾種:
 
-| Verdict ID | Status              |
-| ---------- | ------------------- |
-| 10         | Submission error    |
-| 15         | Can't be judged     |
-| 20         | In queue            |
-| 30         | Compile error       |
-| 35         | Restricted function |
-| 40         | Runtime error       |
-| 45         | Output limit        |
-| 50         | Time limit          |
-| 60         | Memory limit        |
-| 70         | Wrong answer        |
-| 80         | PresentationE       |
-| 90         | Accepted            |
+| Status Code | Mean                | Correspond |
+| ----------- | ------------------- | ---------- |
+| 10          | Submission error    | OS         |
+| 15          | Can't be judged     | OS         |
+| 20          | In queue            | OS         |
+| 30          | Compile error       | CE         |
+| 35          | Restricted function | OS         |
+| 40          | Runtime error       | RE         |
+| 45          | Output limit        | OS         |
+| 50          | Time limit          | TLE        |
+| 60          | Memory limit        | MLE        |
+| 70          | Wrong answer        | WA         |
+| 80          | PresentationE       | OS         |
+| 90          | Accepted            | AC         |
 
 ### ZOJ
 ZOJ 並沒有正式的 API 可以查詢，僅有已知一組可以查詢使用者通過題目列表的連結。
@@ -40,16 +40,16 @@ ZOJ 並沒有正式的 API 可以查詢，僅有已知一組可以查詢使用�
 
 ZOJ 解題的 Status 分成幾種:
 
-| Verdict | Status                |
-| ------- | --------------------- |
-| AC      | Accepted              |
-| WA      | Wrong Answer          |
-| NA      | Wrong Answer(Multiple)|
-| TLE     | Time Limit Exceeded   |
-| MLE     | Memory Limit Exceeded |
-| OLE     | Output Limit Exceeded |
-| RE      | Runtime Error         |
-| CE      | Compile Error         |
+| Status Code | Mean                   | Correspond |
+| ----------- | ---------------------- | ---------- |
+| AC          | Accepted               | AC         |
+| WA          | Wrong Answer           | WA         |
+| NA          | Wrong Answer(Multiple) | WA         |
+| TLE         | Time Limit Exceeded    | TLE        |
+| MLE         | Memory Limit Exceeded  | MLE        |
+| OLE         | Output Limit Exceeded  | OS         |
+| RE          | Runtime Error          | RE         |
+| CE          | Compile Error          | CE         |
 
 ### TOJ
 TOJ 具有查詢特定使用者以及特定題目解題狀況的功能，但基本上就是少了 CSS 的網站，稱不上是 API。
@@ -59,15 +59,15 @@ TOJ 具有查詢特定使用者以及特定題目解題狀況的功能，但基�
 
 TOJ 解題的 Status 分成幾種:
 
-| Verdict | Status                |
-| ------- | --------------------- |
-| AC      | Accepted              |
-| WA      | Wrong Answer          |
-| RE      | Runtime Error         |
-| TLE     | Time Limit Exceeded   |
-| MLE     | Memory Limit Exceeded |
-| CE      | Compile Error         |
-| IE      | Internal Error        |
+| Status Code | Mean                  | Correspond |
+| ----------- | --------------------- | ---------- |
+| AC          | Accepted              | AC         |
+| WA          | Wrong Answer          | WA         |
+| RE          | Runtime Error         | RE         |
+| TLE         | Time Limit Exceeded   | TLE        |
+| MLE         | Memory Limit Exceeded | MLE        |
+| CE          | Compile Error         | CE         |
+| IE          | Internal Error        | OS         |
 
 ### TIOJ
 TIOJ 有 API 可以使用。在 submissions 頁面搜尋後，在網址的 submissions 後面加上 `.json` 就可以獲得 json 的回傳格式。
@@ -78,30 +78,30 @@ Github 連結: https://github.com/adrien1018/tioj/blob/master/app/views/submissi
 
 TIOJ 解題的 Status 分成幾種:
 
-| Status              |
-| ------------------- |
-| Accepted            |
-| Wrong Answer        |
-| Time Limit Exceeded |
-| Segementation Fault |
-| Runtime Error       |
-| Compilation Error   |
+| Status Code | Mean                  | Correspond |
+| ----------- | --------------------- | ---------- |
+| AC          | Accepted              | AC         |
+| WA          | Wrong Answer          | WA         |
+| RE          | Runtime Error         | RE         |
+| TLE         | Time Limit Exceeded   | TLE        |
+| MLE         | Memory Limit Exceeded | MLE        |
+| CE          | Compile Error         | CE         |
 
 ### Kattis
 Kattis 並沒有 API 可以直接提供查詢解題狀況，因此需要使用者自行到 Profile 當中查看 Submission，再搭配我們的 JavaScript 去取得資料並回傳。
 
 Kattis 解題的 Status 分成幾種:
 
-| Status                |
-| --------------------- |
-| Accepted              |
-| Compile Error         |
-| Run Time Error        |
-| Time Limit Exceeded   |
-| Wrong Answer          |
-| Output Limit Exceeded |
-| Memory Limit Exceeded |
-| Judge Error           |
+| Status Code           | Mean                  | Correspond |
+| --------------------- | --------------------- | ---------- |
+| Accepted              | Accepted              | AC         |
+| Compile Error         | Compile Error         | CE         |
+| Run Time Error        | Run Time Error        | RE         |
+| Time Limit Exceeded   | Time Limit Exceeded   | TLE        |
+| Wrong Answer          | Wrong Answer          | WA         |
+| Output Limit Exceeded | Output Limit Exceeded | OS         |
+| Memory Limit Exceeded | Memory Limit Exceeded | MLE        |
+| Judge Error           | Judge Error           | OS         |
 
 ### AtCoder
 AtCoder 有第三方的 API 可以使用。
@@ -111,61 +111,74 @@ AtCoder 有第三方的 API 可以使用。
 
 AtCoder 解題的 Status 分成幾種:
 
-| Verdict | Status                 |
-| ------- | ---------------------- |
-| AC      | Accpted                |
-| WA      | Wrong Answer           |
-| TLE     | Time Limit Exceeded    |
-| MLE     | Memory Limit Exceeded  |
-| RE      | Runtime Error          |
-| CE      | Compile Error          |
-| QLE     | 不清楚                 |
-| OLE     | Output Limit Exceeded  |
-| IE      | Internal Error         |
-| WJ      | Waiting for Judging    |
-| WR      | Waiting for Re-judging |
-| Judging | Judging                |
+| Status Code | Mean                   | Correspond |
+| ----------- | ---------------------- | ---------- |
+| AC          | Accpted                | AC         |
+| WA          | Wrong Answer           | WA         |
+| TLE         | Time Limit Exceeded    | TLE        |
+| MLE         | Memory Limit Exceeded  | MLE        |
+| RE          | Runtime Error          | RE         |
+| CE          | Compile Error          | CE         |
+| QLE         | 不清楚                 | OS         |
+| OLE         | Output Limit Exceeded  | OS         |
+| IE          | Internal Error         | OS         |
+| WJ          | Waiting for Judging    | OS         |
+| WR          | Waiting for Re-judging | OS         |
+| Judging     | Judging                | OS         |
 
-### Codeforces
+### CodeForces
 Codeforces 有官方的 API 可以使用，但是需要先申請一組 Key 與 Secret。
 
 > https://codeforces.com/api/user.status?handle={Handle}
 > https://codeforces.com/apiHelp
 
-| Verdict                   | Status              |
-| ------------------------- | ------------------- |
-| OK                        | Accepted            |
-| PARTIAL                   | 不清楚              |
-| COMPILATION_ERROR         | Compile Error       |
-| RUNTIME_ERROR             | Runtime Error       |
-| WRONG_ANSWER              | Wrong Answer        |
-| PRESENTATION_ERROR        | PresentationE       |
-| TIME_LIMIT_EXCEEDED       | Time Limit Exceed   |
-| MEMORY_LIMIT_EXCEEDED     | Memory Limit Exceed |
-| IDLENESS_LIMIT_EXCEEDED   | 不清楚              |
-| SECURITY_VIOLATED         | 不清楚              |
-| CRASHED                   | 不清楚              |
-| INPUT_PREPARATION_CRASHED | 不清楚              |
-| CHALLENGED                | 不清楚              |
-| SKIPPED                   | 不清楚              |
-| TESTING                   | 不清楚              |
-| REJECTED                  | 不清楚              |
+| Status Code                   | Mean             | Correspond |
+| ------------------------- | ------------------- | ------- |
+| OK                        | Accepted            | AC |
+| PARTIAL                   | 不清楚              | OS |
+| COMPILATION_ERROR         | Compile Error       | CE |
+| RUNTIME_ERROR             | Runtime Error       | RE |
+| WRONG_ANSWER              | Wrong Answer        | WA |
+| PRESENTATION_ERROR        | PresentationE       | OS |
+| TIME_LIMIT_EXCEEDED       | Time Limit Exceed   | TLE |
+| MEMORY_LIMIT_EXCEEDED     | Memory Limit Exceed | MLE |
+| IDLENESS_LIMIT_EXCEEDED   | 不清楚              | OS |
+| SECURITY_VIOLATED         | 不清楚              | OS |
+| CRASHED                   | 不清楚              | OS |
+| INPUT_PREPARATION_CRASHED | 不清楚              | OS |
+| CHALLENGED                | 不清楚              | OS |
+| SKIPPED                   | 不清楚              | OS |
+| TESTING                   | 不清楚              | OS |
+| REJECTED                  | 不清楚              | OS |
 
 ## 規劃
 
 現在預計將所有的 OJ 都分開來做，因此當計分版要爬取資料時，需要透過一個整合的程式將請求分給不同的爬蟲去做。
 可以透過爬蟲來做的 OJ 都會使用 Scrapy 來製作，其餘則是由學員半手動更新到 Google Spreadsheet 上，請求的時候再去爬這張表。
 
-### 查詢格式
-這裡假設要更新的時候，會是以一個記分板為單位來抓，每個記分板的使用者資料、記分板題目分開兩個檔案寫
+### 使用者 OJ 資訊
+不同的 OJ 查詢所使用的資料不太相同，因此這裡制定好每個 OJ 需要給哪些資料。
 
-***user.json***
+> 這裡只會列舉出一般 OJ 的部分，關於特殊 OJ 請參閱 [特殊 OJ 處理](#%E7%89%B9%E6%AE%8A-OJ-%E8%99%95%E7%90%86)
+
+| OJ         | 須提供資料 |
+| ---------- | ---------- |
+| Uva        | UserID     |
+| TOJ        | UserID     |
+| TIOJ       | Username   |
+| AtCoder    | Username   |
+| Codeforces | Handle     |
+
+
+### 查詢格式
+這裡假設要更新的時候，會是以一個記分板為單位來抓，每個記分板的使用者資料、記分板題目分開兩個檔案寫。當要請求更新時
+
+***users.json***
 
 ```json=
 {
-    "users": [
-        {
-            "name": "username",
+    "users": {
+        "username1": {
             "judge": {
                 "TOJ": "TOJ_ID",
                 "TIOJ": "TIOJ_ID",
@@ -173,25 +186,33 @@ Codeforces 有官方的 API 可以使用，但是需要先申請一組 Key 與 S
             }
         },
         ...
-    ]
+    }
 }
 ```
 
-***problem.json***
+***problems.json***
 
 ```json=
 {
-    "problems": [
-        {
-            "judge_name": "TOJ",
-            "problem_id": "pid"
-        },
-        {
-            "judge_name": "TOJ",
-            "problem_id": "pid"
-        },
-        ...
-    ]
+    "Scoreboard1": {
+        "problems": [
+            {
+                "judge_name": "TOJ",
+                "problem_id": "pid"
+            },
+            {
+                "judge_name": "TOJ",
+                "problem_id": "pid"
+            },
+            ...
+        ],
+        "users": [
+            "name1",
+            "name2",
+            ...
+        ]
+    },
+    ...
 }
 ```
 
@@ -501,3 +522,6 @@ if(d.children.length == 21){
 
 
 ![](https://i.imgur.com/UonDrX8.gif)
+
+
+###### tags: `SCIST`
