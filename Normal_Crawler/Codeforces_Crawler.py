@@ -2,8 +2,9 @@ import requests, json, hashlib, random, time
 from requests import ConnectionError
 from logger import logger
 
-key = 'c26aa49d9515545ab7663b5ce4c69e9f5350d796'
-secret = 'a710c2474ac88990799ac6e1c407c52727e7440d'
+config = json.loads(open('OJ_config.json').read())['OJ']['Codeforces']
+key = config['key']
+secret = config['secret']
 
 def Codeforces_Crawler(Handle, ProblemID):
     # ProblemID is combination of ContestID and index
@@ -67,6 +68,3 @@ def Codeforces_Crawler(Handle, ProblemID):
     
     logger.info(f'Successfully Get Status. #Codeforces{ProblemID} #{Handle} #{Status}.')
     return Status
-
-if __name__ == '__main__':
-    Codeforces_Crawler('Koios1143', '231C')
