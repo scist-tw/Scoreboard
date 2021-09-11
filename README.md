@@ -52,10 +52,10 @@ ZOJ 解題的 Status 分成幾種:
 | CE          | Compile Error          | CE         |
 
 ### TOJ
-TOJ 具有查詢特定使用者以及特定題目解題狀況的功能，但基本上就是少了 CSS 的網站，稱不上是 API。
-如果透過爬取個人頁面的解題狀況也許更實際。
+TOJ 有 api 可以使用，不過僅能查詢使用者特定解題狀況的所有題目，沒有時間上的先後順序，因此需要搭配網頁爬蟲。TOJ 也有一個可以方便爬蟲的頁面，基本上就是少了 CSS 的網站。
 
-> http://210.70.137.215/oj/be/chal?proid={PID}&acctid={UID}
+> api: https://toj.tfcis.org/oj/be/api
+> web: http://210.70.137.215/oj/be/chal?proid={PID}&acctid={UID}
 
 TOJ 解題的 Status 分成幾種:
 
@@ -522,6 +522,3 @@ if(d.children.length == 21){
 
 
 ![](https://i.imgur.com/UonDrX8.gif)
-
-
-###### tags: `SCIST`

@@ -26,3 +26,7 @@
 [2021-09-11 01:07:23,724] - [root] - [INFO] - Successfully Get Status. #Codeforces231C #Koios1143 #AC. (Codeforces_Crawler.py:68)
 [2021-09-11 08:23:06,178] - [root] - [INFO] - Successfully Get Submissions. (Codeforces_Crawler.py:34)
 [2021-09-11 08:23:06,183] - [root] - [INFO] - Successfully Get Status. #Codeforces231C #Koios1143 #AC. (Codeforces_Crawler.py:69)
+[2021-09-11 09:04:41,060] - [root] - [INFO] - Successfully Get Status. #TOJ95 #2313 #AC. (TOJ_Crawler.py:34)
+[2021-09-11 09:10:09,714] - [root] - [INFO] - Successfully Get Status. #TOJ21 #2313 #NE. (TOJ_Crawler.py:50)
+[2021-09-11 09:10:25,990] - [root] - [INFO] - Successfully Get Status. #TOJ78 #2313 #WA. (TOJ_Crawler.py:65)
+[2021-09-11 09:12:03,522] - [root] - [INFO] - Successfully Get Status. #TOJ540 #2479 #TLE. (TOJ_Crawler.py:65)
