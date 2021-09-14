@@ -6,6 +6,18 @@ def UVa_Crawler(UserID, ProblemNum):
     # We Usually user ProblemNum to identify a problem, but Uhunt API use ProblemID instead
     # Therefore, we receive ProblemNum, then transform it into ProblemID to search
 
+    try:
+        UserID = int(UserID)
+    except:
+        logger.error('UserID Not Exists.')
+        return 'NE'
+
+    try:
+        ProblemNum = int(ProblemNum)
+    except:
+        logger.error('ProblemNum Not Exists.')
+        return 'NE'
+
     # ensure UserID and ProblemNum are integer
     if(not isinstance(UserID, int)):
         logger.error('UserID should be integer.')
@@ -13,7 +25,7 @@ def UVa_Crawler(UserID, ProblemNum):
     if(not isinstance(ProblemNum, int)):
         logger.error('ProblemNum should be integer.')
         return 'NE'
-    
+        
     logger.info(f'#UserID: {UserID} #ProblemNum: {ProblemNum}.')
 
     # Get ProblemID
@@ -24,13 +36,14 @@ def UVa_Crawler(UserID, ProblemNum):
     except ConnectionError:
         logger.error('Cannot Connect to uhunt API')
         return 'NE'
-    logger.info(f'Successfully Get ProblemNum {ProblemNum}\'s  ProblemID: {ProblemID}.')
-    
+
     try:
         ProblemID = json.loads(Result.text)['pid']
     except:
         logger.warning(f'Invalid ProblemNum: {ProblemNum}.')
         return 'NE'
+    
+    logger.info(f'Successfully Get ProblemNum {ProblemNum}\'s  ProblemID: {ProblemID}.')
 
     # Crawl Submissions
     URL = f"https://uhunt.onlinejudge.org/api/subs-pids/{UserID}/{ProblemID}/999999"

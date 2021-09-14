@@ -1,0 +1,57 @@
+{
+	"scoreboard1": {
+		"problems": [
+			{
+				"judge_name": "uva",
+				"problem_id": "1595"
+			},
+			{
+				"judge_name": "uva",
+				"problem_id": "1585"
+			},
+			{
+				"judge_name": "uva",
+				"problem_id": "1586"
+			},
+			{
+				"judge_name": "tioj",
+				"problem_id": "1719"
+			},
+			{
+				"judge_name": "atcoder",
+				"problem_id": "dp_a"
+			},
+			{
+				"judge_name": "codeforces",
+				"problem_id": "231C"
+			},
+			{
+				"judge_name": "toj",
+				"problem_id": "95"
+			}
+		],
+		"users": [
+			"arashi87",
+			"Koios1143"
+		]
+	},
+	"scoreboard2": {
+		"problems": [
+			{
+				"judge_name": "toj",
+				"problem_id": "87"
+			},
+			{
+				"judge_name": "toj",
+				"problem_id": "96"
+			},
+			{
+				"judge_name": "toj",
+				"problem_id": "97"
+			}
+		],
+		"users": [
+			"Koios1143"
+		]
+	}
+}

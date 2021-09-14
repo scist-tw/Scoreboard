@@ -6,6 +6,12 @@ legal_status = ['AC', 'WA', 'CE', 'TLE', 'MLE']
 
 def TIOJ_Crawler(UserID, ProblemID):
 
+    try:
+        ProblemID = int(ProblemID)
+    except:
+        logger.error('ProblemNum Not Exists.')
+        return 'NE'
+
     # ensure UserID is string
     if(not isinstance(UserID, str)):
         logger.error('UserID should be string')

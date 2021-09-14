@@ -6,6 +6,8 @@ legal_status = ['AC', 'WA', 'CE', 'TLE', 'MLE']
 
 def AtCoder_Crawler(Username, ProblemID):
 
+    logger.info(f'#Username: {Username} #ProblemID: {ProblemID}.')
+
     # ensure Username and ProblemID are string
     if(not isinstance(Username, str)):
         logger.error('Username should be string.')
@@ -13,8 +15,6 @@ def AtCoder_Crawler(Username, ProblemID):
     if(not isinstance(ProblemID, str)):
         logger.error('ProblemID should be string.')
         return 'NE'
-
-    logger.info(f'#Username: {Username} #ProblemID: {ProblemID}.')
 
     # Get Submission list
     URL = f'https://kenkoooo.com/atcoder/atcoder-api/results?user={Username}'

@@ -6,6 +6,18 @@ from lxml import etree
 
 def TOJ_Crawler(UserID, ProblemID):
     
+    try:
+        UserID = int(UserID)
+    except:
+        logger.error('UserID Not Exists.')
+        return 'NE'
+
+    try:
+        ProblemID = int(ProblemID)
+    except:
+        logger.error('ProblemID Not Exists.')
+        return 'NE'
+
     #ensure UserID and ProblemID are integer
     if(not isinstance(UserID, int)):
         logger.error('UserID should be int.')
@@ -13,7 +25,7 @@ def TOJ_Crawler(UserID, ProblemID):
     if(not isinstance(ProblemID, int)):
         logger.error('ProblemID should be int')
         return 'NE'
-    
+        
     # check if has AC submission
     URL = 'https://toj.tfcis.org/oj/be/api'
     data = {
@@ -27,8 +39,7 @@ def TOJ_Crawler(UserID, ProblemID):
         logger.error('Cannot Connect to TOJ API.')
         return 'NE'
         # TODO: when connection failed, check at least three times.
-    
-    print(AC_list.text)
+
     AC_list = json.loads(AC_list.text)['ac']
     if(ProblemID in AC_list):
         logger.info(f'Successfully Get Status. #TOJ{ProblemID} #{UserID} #AC.')

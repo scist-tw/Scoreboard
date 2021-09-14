@@ -10,7 +10,7 @@ def Codeforces_Crawler(Handle, ProblemID):
     # ProblemID is combination of ContestID and index
 
     ProblemID = ProblemID.upper()
-    
+
     # ensure Handle and ProblemID are string
     if(not isinstance(Handle, str)):
         logger.error('Handle should be string')
