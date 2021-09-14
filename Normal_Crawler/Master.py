@@ -21,40 +21,36 @@ class Crawler(Thread):
             data = self.queue.get()
             scoreboard = data['scoreboard']
             judge = data['judge']
-            problem = data['problem_id']
+            problem_id = data['problem_id']
             username = data['username']
             userID = data['userID']
             if(judge == 'uva'):
-                res = UVa_Crawler(userID, problem)
+                res = UVa_Crawler(userID, problem_id, self.num)
             elif(judge == 'tioj'):
-                res = TIOJ_Crawler(userID, problem)
+                res = TIOJ_Crawler(userID, problem_id, self.num)
             elif(judge == 'toj'):
-                res = TOJ_Crawler(userID, problem)
+                res = TOJ_Crawler(userID, problem_id, self.num)
             elif(judge == 'atcoder'):
-                res = AtCoder_Crawler(userID, problem)
+                res = AtCoder_Crawler(userID, problem_id, self.num)
             elif(judge == 'codeforces'):
-                res = Codeforces_Crawler(userID, problem)
+                res = Codeforces_Crawler(userID, problem_id, self.num)
             else:
                 res = 'NE'
             
             self.lock.acquire()
-            logger.info(f'Lock acquired by Worker {self.num}.')
+            logger.info(f'[Worker {self.num}] Lock acquired by Worker {self.num}.')
 
-            try:
-                self.result[scoreboard]
-            except:
-                self.result[scoreboard] = {}
-
-            try:
-                self.result[scoreboard][username]
-            except:
-                self.result[scoreboard][username] = {}
-
-            self.result[scoreboard][username][f'[{judge}]{problem}'] = res
-            logger.info(f'Set result. Username: {username}, judge: {judge}, problem: {problem}, result: {res}')
+            for problem in self.result['result'][scoreboard]:
+                if(problem['problem_id'] == problem_id and problem['judge_name'] == judge):
+                    for user in problem['users']:
+                        if(user['username'] == username):
+                            user['status'] = res
+                            logger.info(f'[Worker {self.num}] Set result. Username: {username}, judge: {judge}, problem: {problem_id}, result: {res}')
+                            break
+                    break
 
             self.lock.release()
-            logger.info(f'Lock released by Worker {self.num}.')
+            logger.info(f'[Worker {self.num}] Lock released by Worker {self.num}.')
 
 # run function receive two arguments: scoreboards and users
 # scoreboards and users are both json type(or using dictionary type)
@@ -62,10 +58,21 @@ class Crawler(Thread):
 # in users, it contains all users config on website
 def run(scoreboards, users, ThreadNum=10):
     Work_Queue = queue.Queue()
+    result = {
+        "result": {}
+    }
     for scoreboard in scoreboards:
+        result['result'][scoreboard] = []
         for problem in scoreboards[scoreboard]['problems']:
             judge = problem['judge_name']
             problem_id = problem['problem_id']
+            result['result'][scoreboard].append({
+                "problem_id": problem_id,
+                "judge_name": judge,
+                "users": [
+
+                ]
+            })
             for user in scoreboards[scoreboard]['users']:
                 try:
                     UserID = users[user][judge]
@@ -78,9 +85,13 @@ def run(scoreboards, users, ThreadNum=10):
                     'username': user,
                     'userID': UserID
                 })
+                result['result'][scoreboard][-1]['users'].append({
+                    "username": user,
+                    "status": "NE"
+                })
+                
     lock = threading.Lock()
     Workers = []
-    result = {}
     
     for i in range(ThreadNum):
         Workers.append(Crawler(Work_Queue, i, lock, result))

@@ -6,17 +6,19 @@ config = json.loads(open('OJ_config.json').read())['OJ']['Codeforces']
 key = config['key']
 secret = config['secret']
 
-def Codeforces_Crawler(Handle, ProblemID):
+def Codeforces_Crawler(Handle, ProblemID, WorkerNum):
     # ProblemID is combination of ContestID and index
 
     ProblemID = ProblemID.upper()
 
     # ensure Handle and ProblemID are string
     if(not isinstance(Handle, str)):
-        logger.error('Handle should be string')
+        logger.error(f'[Worker {WorkerNum}] Handle should be string')
+        logger.info(f'[Worker {WorkerNum}] #Codeforces{ProblemID} #{Handle} #NE')
         return 'NE'
     if(not isinstance(ProblemID, str)):
-        logger.error('ProblemID should be string')
+        logger.error(f'[Worker {WorkerNum}] ProblemID should be string')
+        logger.info(f'[Worker {WorkerNum}] #Codeforces{ProblemID} #{Handle} #NE')
         return 'NE'
 
     # Get Submission list
@@ -28,10 +30,11 @@ def Codeforces_Crawler(Handle, ProblemID):
     try:
         Result = requests.get(URL)
     except ConnectionError:
-        logger.error('Cannot Connect to Codeforces API.')
+        logger.error(f'[Worker {WorkerNum}] Cannot Connect to Codeforces API.')
+        logger.info(f'[Worker {WorkerNum}] #Codeforces{ProblemID} #{Handle} #NE')
         return 'NE'
         # TODO: when connection failed, check at least three times.
-    logger.info('Successfully Get Submissions.')
+    logger.info(f'[Worker {WorkerNum}] Successfully Get Submissions.')
     Submissions = json.loads(Result.text)['result']
 
     # Get Status
@@ -43,7 +46,7 @@ def Codeforces_Crawler(Handle, ProblemID):
     sorted(sub, key=lambda s:s['id'])
 
     if(len(sub) == 0):
-        logger.info(f'Successfully Get Status. #Codeforces{ProblemID} #{Handle} #NE.')
+        logger.info(f'[Worker {WorkerNum}] Successfully Get Status. #Codeforces{ProblemID} #{Handle} #NE.')
         return 'NE'
 
     StatusCode = sub[0]['verdict']
@@ -66,5 +69,5 @@ def Codeforces_Crawler(Handle, ProblemID):
     elif(StatusCode == 'MEMORY_LIMIT_EXCEEDED'):
         Status = 'MLE'
     
-    logger.info(f'Successfully Get Status. #Codeforces{ProblemID} #{Handle} #{Status}.')
+    logger.info(f'[Worker {WorkerNum}] Successfully Get Status. #Codeforces{ProblemID} #{Handle} #{Status}.')
     return Status
