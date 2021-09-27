@@ -8,7 +8,7 @@ var d = document.querySelector("#wrapper > div > div:nth-child(2) > section > ta
 var res = {}
 for(var i=1 ; i <= d.children.length ; i++){
     var Timestamp = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(1)`).innerText;
-	var Problem = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(3)`).innerText;
+	var Problem = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(3) > a`).href.replace('https://open.kattis.com/problems/', '');
 	var Status = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(4)`).innerText;
 	
     // Some Weired Situation

@@ -1,16 +1,16 @@
 // config
-var id = undefined;
-var username = undefined;
-var secret = undefined;
+var id = 1;
+var username = "Koios1143";
+var secret = "testkey";
 
 // Get Data
 var d = document.querySelector("#wrapper > div > div:nth-child(2) > section > table > tbody");
 var res = {}
 for(var i=1 ; i <= d.children.length ; i++){
     var Timestamp = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(1)`).innerText;
-	var Problem = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(3)`).innerText;
+	var Problem = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(3) > a`).href.replace('https://open.kattis.com/problems/', '');
 	var Status = document.querySelector(`#wrapper > div > div:nth-child(2) > section > table > tbody > tr:nth-child(${i}) > td:nth-child(4)`).innerText;
-	
+
     // Some Weired Situation
     // "Fluortanten"
     // Accepted (100) => AC
@@ -59,7 +59,7 @@ for(const [key, value] of Object.entries(res)){
 		ret[key]['Status'] = 'MLE';
 	}
 	else{
-		ret[key]['Status'] = 'OS';
+		ret[key]['Status'] = 'OE';
 	}
 }
 ret = JSON.stringify(ret);
